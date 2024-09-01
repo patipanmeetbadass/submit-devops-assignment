@@ -1,0 +1,14 @@
+bases:
+  - ../../base
+
+resources:
+  - hpa.yaml
+  - network-policy.yaml
+
+patchesStrategicMerge:
+  - deployment-patch.yaml
+  - security-patch.yaml
+
+images:
+  - name: gcr.io/projectNameProd/testapp
+    newTag: prod.1

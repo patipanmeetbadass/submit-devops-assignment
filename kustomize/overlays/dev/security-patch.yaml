@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testapp
+spec:
+  selector:
+    matchLabels:
+      app: testapp
+  template:
+    metadata:
+      labels:
+        app: testapp
+    spec:
+      # run with non-root user
+      securityContext:
+        runAsUser: 5000
+        runAsGroup: 7000
+        fsGroup: 6000
+      containers:
+        - name: testapp
+          securityContext:
+            allowPrivilegeEscalation: false

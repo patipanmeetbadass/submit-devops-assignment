@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: testapp
+  template:
+    metadata:
+      labels:
+        app: testapp
+    spec:
+      strategy:
+        type: RollingUpdate
+        rollingUpdate:
+          maxUnavailable: 50%
+          maxSurge: 50%
+      containers:
+        - name: testapp
+          image: gcr.io/projectNameProd/testapp:prod.1
+          env:
+            - name: LAST_UPDATE
+              # update this value according to the current timestamp
+              # to always rollout a new deployment with the same image tag, such as testapp:dev
+              value: "CURRENT_TIMESTAMP"
+          resources:
+            limits:
+              cpu: 1
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 512Mi

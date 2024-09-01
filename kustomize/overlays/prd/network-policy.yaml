@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-specific-ingress
+spec:
+  podSelector:
+    matchLabels:
+      app: testapp
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    # only allow traffic from a specific IP range
+    - ipBlock:
+        cidr: 10.0.0.0/8
+  egress:
+  - to:
+    # allow all outbound traffic
+    - ipBlock:
+        cidr: 0.0.0.0/0

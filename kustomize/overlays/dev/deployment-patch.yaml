@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: testapp
+  template:
+    metadata:
+      labels:
+        app: testapp
+    spec:
+      strategy:
+        type: Recreate
+      containers:
+        - name: testapp
+          env:
+            - name: LAST_UPDATE
+              # update this value according to the current timestamp
+              # to always rollout a new deployment with the same image tag, such as testapp:dev
+              value: "CURRENT_TIMESTAMP"

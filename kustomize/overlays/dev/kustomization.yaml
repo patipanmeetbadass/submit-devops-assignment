@@ -1,0 +1,18 @@
+resources:
+  - ../../base
+
+patchesStrategicMerge:
+  - deployment-patch.yaml
+  - security-patch.yaml
+
+# Override the image tag
+images:
+  - name: gcr.io/projectNameNonprod/testapp
+    newTag: dev
+
+# Override the log level
+configMapGenerator:
+  - name: app-config
+    behavior: merge
+    literals:
+      - LOG_LEVEL=debug
