@@ -11,7 +11,7 @@ This repository is created for submit the DevOps assignment only. Please checks 
 
     Build command: docker build -t testapp .
     Push command: docker push patipanmeetsavage/assignment:latest
-    Docker Hub URI: [dockerhub](https://hub.docker.com/layers/patipanmeetsavage/assignment/latest/images/sha256-e2f59531a9b511a944d76aa5d9bfcf67a92c7ec2c35f2ff5e6b2db1465869803?context=explore)
+Docker Hub URI: [dockerhub](https://hub.docker.com/layers/patipanmeetsavage/assignment/latest/images/sha256-e2f59531a9b511a944d76aa5d9bfcf67a92c7ec2c35f2ff5e6b2db1465869803?context=explore)
 
 ### 3.Kustomize manifest
 
@@ -30,4 +30,4 @@ Kustomize manifest has been separated into 2 file according to application envir
 
 ### 7.CICD workflow
 
-    Workflow for this assignment is based on Jenkins
+    Workflow for this assignment is based on Jenkins, please check on ./workflow.png for more details.
